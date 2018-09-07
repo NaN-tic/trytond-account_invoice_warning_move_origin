@@ -1,0 +1,33 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice:"
+msgid "Stock Moves \"%(moves)s\" of invoice \"%(invoice)s\" doesn't done state."
+msgstr ""
+"Los movimientos de logística \"%(moves)s\" de la factura \"%(invoice)s\" no "
+"\"se encuentran en el estado reservado."
+
+msgctxt "field:account.invoice.line,stock_move_state:"
+msgid "Stock Move State"
+msgstr "Estado movimientos stock"
+
+msgctxt "selection:account.invoice.line,stock_move_state:"
+msgid "Assigned"
+msgstr "Reservado"
+
+msgctxt "selection:account.invoice.line,stock_move_state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "selection:account.invoice.line,stock_move_state:"
+msgid "Done"
+msgstr "Finalizado"
+
+msgctxt "selection:account.invoice.line,stock_move_state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:account.invoice.line,stock_move_state:"
+msgid "Staging"
+msgstr "En proceso"

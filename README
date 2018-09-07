@@ -1,0 +1,20 @@
+nan_account_invoice_warning_move_origin
+=======================================
+
+The account_invoice_warning_move_origin module of the Tryton application platform.
+
+Installing
+----------
+
+See INSTALL
+
+
+License
+-------
+
+See LICENSE
+
+Copyright
+---------
+
+See COPYRIGHT
