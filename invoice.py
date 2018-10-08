@@ -18,12 +18,24 @@ class Invoice:
         cls._error_messages.update({
                 'warning_move_state': (
                     'Stock Moves "%(moves)s" of invoice "%(invoice)s" doesn\'t '
-                    'done state.'),
+                    'finished state.'),
                 })
 
     @classmethod
     def post(cls, invoices):
+        cls.check_warning_move_state(invoices)
+        super(Invoice, cls).post(invoices)
+
+    @classmethod
+    def validate_invoice(cls, invoices):
+        cls.check_warning_move_state(invoices)
+        super(Invoice, cls).validate_invoice(invoices)
+
+    @classmethod
+    def check_warning_move_state(cls, invoices):
         for invoice in invoices:
+            if invoice.type != 'in':
+                continue
             to_warning = set()
             for line in invoice.lines:
                 if line.origin and line.origin.__name__ == 'stock.move':
@@ -33,12 +45,11 @@ class Invoice:
                         else:
                             to_warning.add(line.origin.rec_name)
             if to_warning:
-                cls.raise_user_warning('warning_move_state%s' % invoice.id,
+                cls.raise_user_warning('warning_move_state.%s' % invoice.id,
                     'warning_move_state', {
                         'moves': ', '.join(to_warning),
                         'invoice': invoice.rec_name,
                         })
-        super(Invoice, cls).post(invoices)
 
 
 class InvoiceLine:
