@@ -3,10 +3,10 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.invoice:"
-msgid "Stock Moves \"%(moves)s\" of invoice \"%(invoice)s\" doesn't done state."
+msgid "Stock Moves \"%(moves)s\" of invoice \"%(invoice)s\" doesn't finished state."
 msgstr ""
-"Els moviments de logística \"%(moves)s\" de la factura \"%(invoice)s\" no es"
-" troben en l'estat reservat."
+"Els moviments d'estoc \"%(moves)s\" de la factura \"%(invoice)s\" no estan "
+"en estat finalitzat."
 
 msgctxt "field:account.invoice.line,stock_move_state:"
 msgid "Stock Move State"
