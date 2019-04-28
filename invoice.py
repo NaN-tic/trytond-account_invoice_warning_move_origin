@@ -12,15 +12,6 @@ class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     @classmethod
-    def __setup__(cls):
-        super(Invoice, cls).__setup__()
-        cls._error_messages.update({
-                'warning_move_state': (
-                    'Stock Moves "%(moves)s" of invoice "%(invoice)s" doesn\'t '
-                    'finished state.'),
-                })
-
-    @classmethod
     def post(cls, invoices):
         cls.check_warning_move_state(invoices)
         super(Invoice, cls).post(invoices)
