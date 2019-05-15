@@ -4,6 +4,8 @@ from sql import Cast
 from sql.functions import Substring
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
+from trytond.i18n import gettext
+from trytond.exceptions import UserWarning
 
 __all__ = ['Invoice', 'InvoiceLine']
 
@@ -23,6 +25,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def check_warning_move_state(cls, invoices):
+        Warning = Pool().get('res.user.warning')
         for invoice in invoices:
             if invoice.type != 'in':
                 continue
@@ -35,11 +38,11 @@ class Invoice(metaclass=PoolMeta):
                         else:
                             to_warning.add(line.origin.rec_name)
             if to_warning:
-                cls.raise_user_warning('warning_move_state.%s' % invoice.id,
-                    'warning_move_state', {
-                        'moves': ', '.join(to_warning),
-                        'invoice': invoice.rec_name,
-                        })
+                key = 'warning_move_state.%s' % invoice.id,
+                if Warning.check(key):
+                    raise UserWarning(key, gettext('teb.confirm_run',
+                            moves=', '.join(to_warning),
+                            invoice=invoice.recname))
 
 
 class InvoiceLine(metaclass=PoolMeta):
