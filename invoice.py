@@ -53,7 +53,7 @@ class InvoiceLine(metaclass=PoolMeta):
             ('draft', 'Draft'),
             ('assigned', 'Assigned'),
             ('done', 'Done'),
-            ('cancel', 'Canceled'),
+            ('cancelled', 'Cancelled'),
             ], 'Stock Move State'),
         'get_stock_move_state', searcher='search_stock_move_state')
 
