@@ -3,9 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
-    <record model="ir.message" id="warning_move_state">
-        <field name="text">Stock Moves "%(moves)s" of invoice "%(invoice)s" doesn\'t
-                  finished state.</field>
-    </record> 
+      <record model="ir.message" id="msg_warning_move_state">
+          <field name="text">Stock Moves "%(moves)s" of invoice "%(invoice)s" doesn't finished state.</field>
+      </record>
     </data>
 </tryton>

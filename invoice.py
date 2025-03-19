@@ -40,7 +40,8 @@ class Invoice(metaclass=PoolMeta):
             if to_warning:
                 key = 'warning_move_state.%s' % invoice.id,
                 if Warning.check(key):
-                    raise UserWarning(key, gettext('teb.confirm_run',
+                    raise UserWarning(key, gettext(
+                            'account_invoice_warning_move_origin.msg_warning_move_state',
                             moves=', '.join(to_warning),
                             invoice=invoice.recname))
 
