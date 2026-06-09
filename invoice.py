@@ -31,7 +31,8 @@ class Invoice(metaclass=PoolMeta):
                 continue
             to_warning = set()
             for line in invoice.lines:
-                if line.origin and line.origin.__name__ == 'stock.move':
+                if (line.origin
+                        and getattr(line.origin, '__name__', None) == 'stock.move'):
                     if line.origin.state != 'done':
                         if line.origin.shipment:
                             to_warning.add(line.origin.shipment.rec_name)
@@ -63,7 +64,8 @@ class InvoiceLine(metaclass=PoolMeta):
         res = {n: {r.id: None for r in lines} for n in names}
         for name in names:
             for line in lines:
-                if line.origin and line.origin.__name__ == 'stock.move':
+                if (line.origin
+                        and getattr(line.origin, '__name__', None) == 'stock.move'):
                     res[name][line.id] = line.origin.state
         return res
 
